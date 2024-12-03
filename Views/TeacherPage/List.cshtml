@@ -1,0 +1,48 @@
+﻿@model TeacherSearchModel
+
+<div class="container shadow-lg p-5 m-4 bg-light rounded">
+
+    <h3 class="text-center text-primary mb-4">List of Teachers</h3>
+
+
+    <!-- Add Teacher -->
+    <p class="text-center">
+        <a href="/TeacherPage/New" class="btn btn-success btn-lg mt-3 mb-4">Add Teacher</a>
+    </p>
+
+
+    <!-- Date range filter form -->
+    @using (Html.BeginForm("List", "TeacherPage", FormMethod.Post))
+    {
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <label for="StartDate" class="form-label">Start Date:</label>
+                <input type="date" id="StartDate" name="StartDate" value="@Model.StartDate" class="form-control" />
+            </div>
+            <div class="col-md-6">
+                <label for="EndDate" class="form-label">End Date:</label>
+                <input type="date" id="EndDate" name="EndDate" value="@Model.EndDate" class="form-control" />
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary btn-lg mt-3">Search</button>
+        </div>
+    }
+
+    <!-- Teacher List -->
+    <div class="mt-4">
+        <h4 class="text-center text-primary">Teachers</h4>
+        <div class="list-group">
+            @foreach (cumulative01.Models.Teacher CurrentTeacher in Model.Teachers)
+            {
+                <a href="/TeacherPage/Show/@CurrentTeacher.TeacherId" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">@CurrentTeacher.TeacherFName @CurrentTeacher.TeacherLName</h5>
+                    </div>
+                    <p class="mb-1">Teacher ID: @CurrentTeacher.TeacherId</p>
+                </a>
+            }
+        </div>
+    </div>
+
+</div>

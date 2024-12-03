@@ -1,0 +1,51 @@
+﻿@model cumulative01.Models.Student
+
+<div class="container mt-5 bg-light p-4 rounded shadow-lg">
+
+    @if (Model.StudentId > 0)
+    {
+
+        <h2 class="text-center text-primary mb-4">Student Information</h2>
+
+        <!-- Student Information Card -->
+        <div class="card shadow-lg rounded-lg border-0">
+            <div class="card-body">
+            <h5 class="card-title text-center text-dark mb-4">Student Details</h5>
+
+            <!-- Student Information List -->
+            <div class="list-group">
+                <div class="list-group-item">
+                    <strong>Student Id:</strong> @Model.StudentId
+                </div>
+                <div class="list-group-item">
+                    <strong>Student Name:</strong> @Model.StudentFName @Model.StudentLName
+                </div>
+                <div class="list-group-item">
+                    <strong>Student Number:</strong> @Model.StudentNumber
+                </div>
+                <div class="list-group-item">
+                    <strong>Enrolment Date:</strong> @Model.EnrolDate
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+        <!-- Button Section at the Bottom -->
+        <div class="row justify-content-between mt-5">
+            <div class="col-3 text-start">
+                <a href="/StudentPage/List" class="btn btn-secondary btn-lg w-100">Back to Students</a>
+            </div>
+            <div class="col-3 text-end">
+                <a href="/StudentPage/DeleteConfirm/@Model.StudentId" class="btn btn-danger btn-lg w-100">Delete Student</a>
+            </div>
+        </div>
+    }
+
+    else
+    {
+        <!-- Invalid Student ID Section -->
+        <h1 class="text-center text-danger">Invalid Student ID</h1>
+        <p class="text-center">No student found for the Student ID - @ViewData["Id"]</p>
+    }
+</div>

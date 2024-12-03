@@ -1,0 +1,47 @@
+﻿<div class="container shadow-lg p-4 mt-4 bg-light rounded">
+
+    @if (Model.TeacherId > 0)
+    {
+
+        <!-- Teacher Name -->
+        <h4 class="text-center mb-4 text-primary">Teacher Name: @Model.TeacherFName @Model.TeacherLName</h4>
+
+        <!-- Teacher Details Section -->
+        <div class="row mb-4 text-center">
+            <div class="col-md-6">
+                <p><strong>Teacher ID:</strong> @Model.TeacherId</p>
+                <p><strong>Employee Number:</strong> @Model.EmployeeNumber</p>
+            </div>
+            <div class="col-md-6">
+                <p><strong>Hire Date:</strong> @Model.HireDate</p>
+                <p><strong>Salary:</strong> $@Model.Salary</p>
+            </div>
+        </div>
+
+        <!-- Courses Section -->
+        <h4 class="text-center mb-3">Courses:</h4>
+        <ul class="list-group">
+            @foreach (var course in Model.CoursesByTeacher)
+            {
+                <li class="list-group-item text-center">@course.CourseName</li>
+            }
+        </ul>
+
+        <!-- Button Section at the Bottom -->
+        <div class="row justify-content-between mt-5">
+            <div class="col-3 text-start">
+                <a href="/TeacherPage/List" class="btn btn-secondary btn-lg w-100">Back to Teachers</a>
+            </div>
+            <div class="col-3 text-end">
+                <a href="/TeacherPage/DeleteConfirm/@Model.TeacherId" class="btn btn-danger btn-lg w-100">Delete Teacher</a>
+            </div>
+        </div>
+    }
+    else
+    {
+        <!-- Invalid Teacher ID Section -->
+        <h1 class="text-center text-danger">Invalid Teacher ID</h1>
+        <p class="text-center">No teacher found for the Teacher ID - @ViewData["Id"]</p>
+    }
+
+</div>

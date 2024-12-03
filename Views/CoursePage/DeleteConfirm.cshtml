@@ -1,0 +1,14 @@
+﻿@model cumulative01.Models.Course
+
+<!-- Delete Confirmation Page -->
+<div class="container shadow-lg p-5 m-4 bg-light rounded">
+    <h3 class="mb-4 text-danger">Are you sure you want to delete this Course from the list?</h3>
+
+    <h4 class="mb-4 text-primary">Course Name: @Model.CourseName</h4>
+
+    <a href="/CoursePage/Show/@Model.CourseId" class="btn btn-secondary me-3">No, take me back</a>
+
+    <form method="POST" action="/CoursePage/Delete/@Model.CourseId" class="d-inline">
+        <input type="submit" value="Confirm Delete" class="btn btn-danger" />
+    </form>
+</div>

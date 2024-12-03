@@ -1,0 +1,32 @@
+﻿@model IEnumerable<cumulative01.Models.Course>
+<div class="container mt-5 bg-light p-4 rounded shadow-lg">
+
+    <!-- Course Title -->
+    <h2 class="text-center text-primary mb-5">List of Courses</h2>
+
+    <!-- Add Course -->
+    <p class="text-center">
+        <a href="/CoursePage/New" class="btn btn-success btn-lg mb-4">Add Course</a>
+    </p>
+
+    <!-- Courses -->
+    <div class="row">
+        @foreach (cumulative01.Models.Course CurrentCourse in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <!-- Course Card -->
+                <div class="card shadow-sm rounded-lg border-0 h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-center mb-3">
+                            <a href="/CoursePage/Show/@CurrentCourse.CourseId" class="text-decoration-none text-dark">
+                                @CurrentCourse.CourseName
+                            </a>
+                        </h5>
+                        <p class="text-center text-muted">Click to see details</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
