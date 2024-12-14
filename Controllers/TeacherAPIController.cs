@@ -21,7 +21,7 @@ namespace cumulative01.Controllers
         /// Returns a list of Teachers in the system
         /// </summary>
         /// <example>
-        /// GET api/Teacher/ListTeachers -> [{"teacherId":1,"teacherFName":"Alexander","teacherLName":"Bennett","employeeNumber":"T378","hireDate":"2016-08-05 00:00:00","salary":55.30,"coursesByTeacher":[{"courseId":1,"courseCode":"http5101","teacherId":1,"startDate":"2018-09-04","finishDate":"2018-12-14","courseName":"Web Application Development"}]},{"teacherId":2,"teacherFName":"Caitlin","teacherLName":"Cummings","employeeNumber":"T381","hireDate":"2014-06-10 00:00:00","salary":62.77,"coursesByTeacher":[{"courseId":2,"courseCode":"http5102","teacherId":2,"startDate":"2018-09-04","finishDate":"2018-12-14","courseName":"Project Management"},{"courseId":6,"courseCode":"http5201","teacherId":2,"startDate":"2019-01-08","finishDate":"2019-04-27","courseName":"Security & Quality Assurance"}]},..]
+        /// GET api/Teacher/ListTeachers -> [{"teacherId":1,"teacherFName":"Alexander","teacherLName":"Bennett","employeeNumber":"T378","hireDate":"2016-08-05 00:00:00","salary":60.10,"coursesByTeacher":[{"courseId":1,"courseCode":"http5101","teacherId":1,"startDate":"2018-09-04","finishDate":"2018-12-14","courseName":"Web Application Development"}]},{"teacherId":2,"teacherFName":"Caitlin","teacherLName":"Cummings","employeeNumber":"T381","hireDate":"2014-06-10 00:00:00","salary":62.77,"coursesByTeacher":[{"courseId":2,"courseCode":"http5102","teacherId":2,"startDate":"2018-09-04","finishDate":"2018-12-14","courseName":"Project Management"},{"courseId":6,"courseCode":"http5201","teacherId":2,"startDate":"2019-01-08","finishDate":"2019-04-27","courseName":"Security & Quality Assurance"}]},..]
         /// </example>
         /// <returns>
         /// A list of teacher objects 
@@ -142,7 +142,7 @@ namespace cumulative01.Controllers
         /// </summary>
         /// <param name="id">It accepts an id which is an integer</param>
         /// <example>
-        /// GET api/Teacher/FindTeacher/7 -> {"teacherId":7,"teacherFName":"Shannon","teacherLName":"Barton","employeeNumber":"T397","hireDate":"2013-08-04 00:00:00","salary":64.70,"coursesByTeacher":[{"courseId":4,"courseCode":"http5104","teacherId":7,"startDate":"2018-09-04","finishDate":"2018-12-14","courseName":"Digital Design"}]}
+        /// GET api/Teacher/FindTeacher/8 -> {"teacherId":8,"teacherFName":"Dana","teacherLName":"Ford","employeeNumber":"T401","hireDate":"2014-06-26 00:00:00","salary":71.15,"coursesByTeacher":[{"courseId":5,"courseCode":"http5203","teacherId":8,"startDate":"2018-09-04","finishDate":"2018-12-14","courseName":"Database ddevelopment"}]}
         /// </example>
         /// <returns>
         /// A matching teacher object by its ID. Empty object if Teacher not found
@@ -200,8 +200,7 @@ namespace cumulative01.Controllers
         }
 
 
-        /// curl -X "POST" -H "Content-Type: application/json" -d "{\"teacherFName\": \"Robert\", \"teacherLName\": \"Smith\", \"employeeNumber\": \"T102\", \"hireDate\": \"2024-11-22 00:00:00\", \"salary\": 55.25}" "https://localhost:7151/api/Teacher/AddTeacher"
-
+       
         /// <summary>
         /// Adds a teacher to the database
         /// </summary>
@@ -255,19 +254,21 @@ namespace cumulative01.Controllers
             return 0;
         }
 
-        /// curl -X "DELETE" "https://localhost:7151/api/Teacher/DeleteTeacher/20"
+        
 
-        /// <summary>
-        /// Deletes a Teacher from the database
-        /// </summary>
-        /// <param name="TeacherId">Primary key of the teacher to delete</param>
-        /// <example>
-        /// DELETE: api/Teacher/DeleteTeacher/{TeacherId} -> "The teacher with given id {TeacherId} has been removed from the DB"
-        /// </example>
-        /// <returns>
-        /// It returns the string "The teacher with given id {teacherid} has been removed from the DB" if the teacher id is found in DB, otherwise it returns the string "The teacher with given id {teacherid} is not found"
-        /// </returns>
-
+       /// <summary>
+      /// Deletes a teacher from the database using their ID.
+      /// </summary>
+     /// <param name="TeacherId">The ID of the teacher to delete.</param>
+     /// <example>
+     /// DELETE: api/Teacher/DeleteTeacher/{TeacherId}  
+     /// Response: "The teacher with ID {TeacherId} has been removed from the database."
+     /// </example>
+     /// <returns>
+     /// A message that tells you:  
+     /// - If the teacher ID is found: "The teacher with ID {TeacherId} has been removed from the database."  
+    /// - If the teacher ID is not found: "The teacher with ID {TeacherId} was not found."
+    /// </returns>  
         [HttpDelete(template: "DeleteTeacher/{TeacherId}")]
         public string DeleteTeacher(int TeacherId)
         {
